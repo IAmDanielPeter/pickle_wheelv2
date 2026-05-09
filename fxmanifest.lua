@@ -1,19 +1,30 @@
 fx_version 'cerulean'
-lua54 'yes'
 game 'gta5'
+lua54 'yes'
 
-name         'pickle_wheel'
-version      '1.0.0'
-description  'Wheel & Pedal Support for FiveM.'
-author       'Pickle Mods'
+name 'Pickle Wheel Enhanced'
+description 'Enhanced Pickle Wheel with advanced manual transmission system'
+version '2.0.0'
 
-ui_page "nui/index.html"
+ui_page 'nui/index.html'
 
 files {
-    "nui/index.html",
-    "nui/assets/**/*.*",
+    'nui/index.html',
+    'nui/assets/**/*.*'
 }
 
 client_scripts {
-    'client.lua',
+    'client.lua'
+}
+
+server_scripts {
+    'server.lua'
+}
+
+shared_scripts {
+    '@ox_lib/init.lua'
+}
+
+dependencies {
+    'ox_lib'
 }

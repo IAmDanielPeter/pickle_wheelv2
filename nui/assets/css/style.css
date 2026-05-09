@@ -1,7 +1,7 @@
 body {
-    background-color:transparent;
-    margin:0;
-    padding:0;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -19,7 +19,7 @@ body {
     height: 30vw;
 }
 
-#container > div {
+#container>div {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -30,28 +30,29 @@ body {
 }
 
 #wheel {
-    display:inline-block;
-    vertical-align:bottom;
+    display: inline-block;
+    vertical-align: bottom;
     height: 100%;
-    transform-origin:center center;
-    margin-right:1vw;
+    transform-origin: center center;
+    margin-right: 1vw;
 }
- 
+
 .pedal {
-    display:inline-block;
-    vertical-align:bottom;
-    width:1vw;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1vw;
     height: 100%;
     margin-left: 0.25vw;
-    margin-right:0.25vw;
+    margin-right: 0.25vw;
     background-color: rgba(0, 0, 0, 0.5);
 }
-.pedal > span {
-    display:inline-block;
-    width:100%;
-    height:100%;
-    background-color:rgba(0, 0, 0, 0.5);
-    vertical-align:top;
+
+.pedal>span {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    vertical-align: top;
 }
 
 .top {
@@ -64,35 +65,36 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 0.5vw;
+    width: 0.5vw;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #484848;
+    background: #484848;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #2b2b2b;
+    background: #2b2b2b;
 }
 
-.middle > h3, .middle > span {
+.middle>h3,
+.middle>span {
     align-self: center;
     width: 50%;
 }
 
-.middle > span {
+.middle>span {
     margin-left: 4vw;
     margin-bottom: 1.15vw;
 }
 
-.middle > div {
+.middle>div {
     margin-left: 4vw;
 }
 
@@ -104,15 +106,15 @@ body {
     margin-bottom: 0.1vw;
 }
 
-.option > div:first-child {
+.option>div:first-child {
     display: flex;
 }
 
-.option > div > b {
+.option>div>b {
     align-self: center;
 }
 
-.option > div:last-child {
+.option>div:last-child {
     margin-left: auto;
 }
 
@@ -123,11 +125,16 @@ body {
     margin-bottom: 1vw;
 }
 
-#throttle  {
-    background-color:#0A0;
+#throttle {
+    background-color: #0A0;
 }
+
 #brake {
-    background-color:#C00;
+    background-color: #C00;
+}
+
+#clutch {
+    background-color: #FA0;
 }
 
 h1 {
@@ -147,7 +154,7 @@ select {
     width: 5vw;
 }
 
-.pressed > div > b {
+.pressed>div>b {
     color: red;
 }
 
@@ -188,4 +195,243 @@ select {
 
 #close:hover {
     background-color: red;
+}
+
+/* Toggle Switch Styling */
+.transmission-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 1vw;
+    vertical-align: bottom;
+}
+
+.toggle-label {
+    margin-left: 0.5vw;
+    font-size: 0.9vw;
+    font-weight: bold;
+    color: #FA0;
+    /* Clutch color to match */
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3vw;
+    height: 1.5vw;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.1vw;
+    width: 1.1vw;
+    left: 0.2vw;
+    bottom: 0.2vw;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #FA0;
+    /* Clutch color */
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #FA0;
+}
+
+input:checked+.slider:before {
+    transform: translateX(1.5vw);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 1.5vw;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Cyberpunk Gear Indicator */
+.cyberpunk-indicator {
+    position: fixed;
+    right: 15vw;
+    bottom: 5vw;
+    width: 5.5vw;
+    height: 6.5vw;
+    display: none;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.cyberpunk-indicator.visible {
+    display: block;
+    opacity: 1;
+}
+
+.cyberpunk-indicator.changing {
+    animation: gearPulse 0.5s ease-out;
+}
+
+@keyframes gearPulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.indicator-border {
+    width: 100%;
+    height: 100%;
+    border: 0.15vw solid rgba(255, 170, 0, 0.8);
+    border-radius: 0.8vw;
+    box-shadow: 0 0 8px rgba(255, 170, 0, 0.6),
+        inset 0 0 8px rgba(255, 170, 0, 0.6);
+    position: relative;
+    background: rgba(0, 0, 0, 0.7);
+    overflow: hidden;
+}
+
+.indicator-border:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 170, 0, 0.1) 10px,
+            rgba(255, 170, 0, 0.1) 20px);
+    animation: backgroundMove 8s linear infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+
+    100% {
+        transform: translateX(-20px) translateY(-20px);
+    }
+}
+
+.indicator-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.gear-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.7vw;
+    font-weight: bold;
+    color: rgba(255, 170, 0, 0.8);
+    text-shadow: 0 0 5px rgba(255, 170, 0, 0.6);
+    letter-spacing: 0.1vw;
+    margin-bottom: 0.3vw;
+}
+
+.gear-value {
+    font-family: 'Arial', sans-serif;
+    font-size: 2vw;
+    font-weight: bold;
+    color: rgb(255, 170, 0);
+    text-shadow: 0 0 10px rgba(255, 170, 0, 0.8);
+}
+
+/* RPM Meter Styles */
+.rpm-meter-container {
+    width: 90%;
+    margin-top: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rpm-label {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.5vw;
+    font-weight: bold;
+    color: rgba(255, 170, 0, 0.8);
+    text-shadow: 0 0 5px rgba(255, 170, 0, 0.6);
+    letter-spacing: 0.1vw;
+    margin-bottom: 0.2vw;
+}
+
+.rpm-meter {
+    width: 100%;
+    height: 0.4vw;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 170, 0, 0.4);
+    border-radius: 0.2vw;
+    overflow: hidden;
+    position: relative;
+}
+
+.rpm-meter.redline {
+    animation: redlinePulse 0.15s infinite alternate;
+}
+
+@keyframes redlinePulse {
+    from {
+        box-shadow: 0 0 2px rgba(255, 0, 0, 0.7);
+    }
+
+    to {
+        box-shadow: 0 0 5px rgba(255, 0, 0, 1);
+    }
+}
+
+.rpm-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right,
+            rgb(0, 200, 0) 0%,
+            rgb(200, 200, 0) 70%,
+            rgb(200, 0, 0) 85%);
+    transition: width 0.1s ease-out;
+}
+
+.rpm-value {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.6vw;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    margin-top: 0.2vw;
 }
